@@ -14,11 +14,18 @@ import User from "./components/UserPage/User";
 // import Todolist from "./components/Todolist/Todolist";
 // export const UserContext = createContext();
 
+export const ThemeContext = createContext();
+
 function App() {
-  // const [user, setuser] = useState("Jack");
+  const [isDark, setIsDark] = useState(false);
+
+  const theme = {
+    light: { bgcolor: "white", button: "orange" },
+    dark: { bgcolor: "black", button: "blue"  },
+  };
 
   return (
-    <>
+    <ThemeContext.Provider value={isDark ? theme.light : theme.dark}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Navigate to={"/home"} />} />
@@ -28,10 +35,25 @@ function App() {
           <Route path="/server" element={<ServerPage />} />
           <Route path="/user" element={<UsersPage />} />
           <Route path="/user/:id" element={<User />} />
+          
         </Route>
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
-    </>
+      <button
+        style={{
+          width: "150px",
+          height: "50px",
+          padding: "15px",
+          borderRadius: "25px",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          setIsDark(!isDark);
+        }}
+      >
+        toggle
+      </button>
+    </ThemeContext.Provider>
   );
 }
 

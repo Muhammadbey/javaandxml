@@ -8,7 +8,7 @@ body {
 header {
   height: 100px;
   width: 100%;
-  background-color: rgba(218, 203, 203, 0.701);
+  /* background-color: rgba(218, 203, 203, 0.701); */
 }
 nav {
   padding-top: 25px;

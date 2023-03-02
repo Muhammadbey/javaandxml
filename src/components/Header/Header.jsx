@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 
+import { ThemeContext } from "../../App";
 import "./header.css";
 
 const Header = () => {
+
+const contextTheme = useContext(ThemeContext)
   const { pathname } = useLocation();
-  console.log(pathname);
 
   const route = [
     { name: "Home", path: "/home" },
@@ -15,22 +17,22 @@ const Header = () => {
     // { name: "Context", path: "/context" },
   ];
   return (
-    <header>
-      <nav>
-        <ul>
-          {route.map((route, index) => (
-            <li key={index}>
-              <Link
-                to={route.path}
-                className={pathname === route.path ? "active" : ""}
-              >
-                {route.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+      <header style={{ backgroundColor: contextTheme.button }}>
+        <nav>
+          <ul>
+            {route.map((route, index) => (
+              <li key={index}>
+                <Link
+                  to={route.path}
+                  className={pathname === route.path ? "active" : ""}
+                >
+                  {route.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
   );
 };
 
