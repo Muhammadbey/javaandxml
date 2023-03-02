@@ -1,0 +1,24 @@
+button {
+  width: 400px;
+  height: 100px;
+  background-color: rgb(89, 62, 137);
+  border-radius: 20px;
+  margin: auto;
+  font-size: 25px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+span {
+  font-size: 25px;
+  font-weight: 700;
+  color: black;
+}
+button:hover {
+  opacity: 0.6;
+}

@@ -1,0 +1,35 @@
+*,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 100px;
+  width: 100%;
+  background-color: rgba(218, 203, 203, 0.701);
+}
+nav {
+  padding-top: 25px;
+}
+nav > ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+ul > li {
+  font-family: sans-serif;
+  font-size: 35px;
+  font-weight: 800px;
+  list-style: none;
+}
+li a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  color: red !important;
+}
