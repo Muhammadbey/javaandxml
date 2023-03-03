@@ -9,6 +9,7 @@ import ServerPage from "./components/Pages/Server/ServerPage";
 import Layout from "./components/Layout/Layout";
 import UsersPage from "./components/UserPage/UsersPage";
 import User from "./components/UserPage/User";
+import Reducer from "./components/Reducer/Reducer";
 // import Context from "./components/Context/Context";
 // import Counter from "./components/counter/Counter";
 // import Todolist from "./components/Todolist/Todolist";
@@ -22,7 +23,7 @@ function App() {
   const theme = {
     light: { bgcolor: "white", button: "orange" },
     dark: { bgcolor: "black", button: "blue"  },
-  };
+  };;
 
   return (
     <ThemeContext.Provider value={isDark ? theme.light : theme.dark}>
@@ -53,6 +54,8 @@ function App() {
       >
         toggle
       </button>
+
+      <Reducer/>
     </ThemeContext.Provider>
   );
 }
