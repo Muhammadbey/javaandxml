@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
 const initialTodos = [
   {
@@ -26,21 +26,46 @@ const reducer = (state, action) => {
 };
 
 const Reducer = () => {
+  const [item, setItem] = useState("");
+
   const [todos, dispatch] = useReducer(reducer, initialTodos);
-  console.log(todos);
+
+  const handleChange = (e) => {
+    setItem(e.target.value);
+  };
+  const addTodo = (t) => {
+    const isExist = todos.some((t) => t.title == item);
+    if (!isExist) {
+      dispatch({
+        type: "ADD",
+        payload: { id: Math.random(), title: item },
+      });
+    }
+  };
+
+  const deleteTodo = (id) => {
+    dispatch({ type: "DELETE", payload: id });
+  };
   return (
     <>
-      <input type="text"  />
+      <input type="text" onChange={handleChange} />
       <button
         onClick={() => {
-          dispatch({
-            type: "ADD",
-            payload: { id: Math.random(), title: "ascacac" },
-          });
+          addTodo();
         }}
       >
         Add items
       </button>
+      <ul>
+        {todos.map((todo) => {
+          return (
+            <li key={todo.id}>
+              <p>{todo.title}</p>
+              <button onClick={() => deleteTodo()}>Delete</button>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 };
