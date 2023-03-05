@@ -34,7 +34,7 @@ const Reducer = () => {
     setItem(e.target.value);
   };
   const addTodo = (t) => {
-    const isExist = todos.some((t) => t.title == item);
+    const isExist = todos.some((t) => t.title === item);
     if (!isExist) {
       dispatch({
         type: "ADD",
@@ -43,9 +43,9 @@ const Reducer = () => {
     }
   };
 
-  const deleteTodo = (id) => {
-    dispatch({ type: "DELETE", payload: id });
-  };
+  // const deleteTodo = (id) => {
+    // dispatch({ type: "DELETE", payload: id });
+  // };
   return (
     <>
       <input type="text" onChange={handleChange} />
@@ -61,7 +61,13 @@ const Reducer = () => {
           return (
             <li key={todo.id}>
               <p>{todo.title}</p>
-              <button onClick={() => deleteTodo()}>Delete</button>
+              <button
+                onClick={() => {
+                  dispatch({ type: "DELETE", payload: todo.id });
+                }}
+              >
+                Delete
+              </button>
             </li>
           );
         })}
