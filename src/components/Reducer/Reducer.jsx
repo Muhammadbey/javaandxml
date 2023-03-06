@@ -25,6 +25,8 @@ const reducer = (state, action) => {
   }
 };
 
+
+
 const Reducer = () => {
   const [item, setItem] = useState("");
 
@@ -33,7 +35,7 @@ const Reducer = () => {
   const handleChange = (e) => {
     setItem(e.target.value);
   };
-  const addTodo = (t) => {
+  const addTodo = () => {
     const isExist = todos.some((t) => t.title === item);
     if (!isExist) {
       dispatch({
@@ -43,19 +45,13 @@ const Reducer = () => {
     }
   };
 
-  // const deleteTodo = (id) => {
-    // dispatch({ type: "DELETE", payload: id });
-  // };
+  const deleteTodo = (id) => {
+    dispatch({ type: "DELETE", payload: id });
+  };
   return (
     <>
       <input type="text" onChange={handleChange} />
-      <button
-        onClick={() => {
-          addTodo();
-        }}
-      >
-        Add items
-      </button>
+      <button onClick={addTodo}>Add items</button>
       <ul>
         {todos.map((todo) => {
           return (
@@ -63,7 +59,7 @@ const Reducer = () => {
               <p>{todo.title}</p>
               <button
                 onClick={() => {
-                  dispatch({ type: "DELETE", payload: todo.id });
+                  deleteTodo(todo.id);
                 }}
               >
                 Delete

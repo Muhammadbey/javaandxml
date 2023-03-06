@@ -1,12 +1,12 @@
-import React, {useContext } from "react";
+import React, { useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 
 import { ThemeContext } from "../../App";
+import { HeaderWrapper } from "./styles";
 import "./header.css";
 
 const Header = () => {
-
-const contextTheme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext);
   const { pathname } = useLocation();
 
   const route = [
@@ -16,23 +16,24 @@ const contextTheme = useContext(ThemeContext)
     { name: "Server", path: "/server" },
     // { name: "Context", path: "/context" },
   ];
+
   return (
-      <header style={{ backgroundColor: contextTheme.button }}>
-        <nav>
-          <ul>
-            {route.map((route, index) => (
-              <li key={index}>
-                <Link
-                  to={route.path}
-                  className={pathname === route.path ? "active" : ""}
-                >
-                  {route.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
+    <HeaderWrapper theme={theme}>
+      <nav>
+        <ul>
+          {route.map((route, index) => (
+            <li key={index}>
+              <Link
+                to={route.path}
+                className={pathname === route.path ? "active" : ""}
+              >
+                {route.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </HeaderWrapper>
   );
 };
 

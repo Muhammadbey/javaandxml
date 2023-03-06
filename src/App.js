@@ -20,13 +20,9 @@ export const ThemeContext = createContext();
 function App() {
   const [isDark, setIsDark] = useState(false);
 
-  const theme = {
-    light: { bgcolor: "white", button: "orange" },
-    dark: { bgcolor: "black", button: "blue"  },
-  };;
-
+ 
   return (
-    <ThemeContext.Provider value={isDark ? theme.light : theme.dark}>
+    <ThemeContext.Provider value={isDark ? "dark" : "light"}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Navigate to={"/home"} />} />
@@ -36,7 +32,6 @@ function App() {
           <Route path="/server" element={<ServerPage />} />
           <Route path="/user" element={<UsersPage />} />
           <Route path="/user/:id" element={<User />} />
-          
         </Route>
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
@@ -55,7 +50,7 @@ function App() {
         toggle
       </button>
 
-      <Reducer/>
+      <Reducer />
     </ThemeContext.Provider>
   );
 }
